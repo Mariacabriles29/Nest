@@ -8,11 +8,15 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCartDto } from './dto/create-car.dto';
 
 @Controller('cars')
+//pongo el validationPipe a nivel del controlador oara que lo tengan todos mis metodos
+@UsePipes(ValidationPipe)
 export class CarsController {
   //creo el constructor para aplicar inyecccion de dependencias del cars service
   constructor(private readonly CarsService: CarsService) {}
