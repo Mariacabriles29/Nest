@@ -33,7 +33,7 @@ export class CarsController {
   }
   @Post()
   createCar(@Body() createCardDto: CreateCartDto) {
-    return createCardDto;
+    return this.CarsService.create(createCardDto);
   }
   @Patch(':id')
   updateCar(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
