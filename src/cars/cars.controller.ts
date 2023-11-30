@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCartDto } from './dto/create-car.dto';
+import { UpdateCartDto } from './dto/update-car.dto';
 
 @Controller('cars')
 //pongo el validationPipe a nivel del controlador oara que lo tengan todos mis metodos
@@ -36,8 +37,11 @@ export class CarsController {
     return this.CarsService.create(createCardDto);
   }
   @Patch(':id')
-  updateCar(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
-    return body;
+  updateCar(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateCarDto: UpdateCartDto,
+  ) {
+    return this.CarsService.update(id, updateCarDto);
   }
   @Delete(':id')
   deleteCar(@Param('id', ParseIntPipe) id: number) {
