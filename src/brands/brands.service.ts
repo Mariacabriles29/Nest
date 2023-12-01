@@ -52,7 +52,7 @@ export class BrandsService {
   remove(id: string) {
     this.brands = this.brands.filter((brand) => brand.id !== id);
   }
-
+  //metodo para la data de las marcas
   fillCarsWithSeedData(brands: Brand[]) {
     this.brands = brands;
   }
