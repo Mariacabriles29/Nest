@@ -63,4 +63,8 @@ export class CarsService {
     const car = this.findByOneById(id);
     this.cars = this.cars.filter((car) => car.id !== id);
   }
+  //metodo para cargar la data de los carros
+  fillCarsWithSeedData(cars: Car[]) {
+    this.cars = cars;
+  }
 }
